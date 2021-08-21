@@ -212,7 +212,7 @@ def _st_window_run(self, variables, sets, parameters, fixApproach, partition, iw
 									x[i][d][t].lb = 0
 									x[i][d][t].ub = 1
 							
-						pos += fw_size*(timesInfactibility + 1)
+						pos += fw_size*(2*(timesInfactibility - 1) + 1)
 						#as if it where solved we go to the next window
 							
 				else:
@@ -229,9 +229,6 @@ def _st_window_run(self, variables, sets, parameters, fixApproach, partition, iw
 			except:
 				bestBounds.append("-")
 					
-			rollbackMode = 0
-			timesInfactibility = 0
-			
 			####### saving solution in alternative_x
 			for i in range(I):
 				for d in range(D):
@@ -239,13 +236,21 @@ def _st_window_run(self, variables, sets, parameters, fixApproach, partition, iw
 						alternative_x[i][d][t] = x[i][d][t].x
 			
 			####### setting parameters: fix
+			if timesInfactibility > 0:
+				pos -= fw_size*(2*(timesInfactibility - 1) + 1) #we go back a step while pos keeps movingo forward, this is why we do it times two
 			if partition == int(NM_RF.I):
 				If = min(pos, I)
-				Il = min(pos+fw_size, I)
 			elif partition == int(NM_RF.W):
 				Df = min(7*pos, D)
+			if timesInfactibility > 0:
+				pos += fw_size*(2*(timesInfactibility - 1) + 1)
+			if partition == int(NM_RF.I):
+				Il = min(pos+fw_size, I)
+			elif partition == int(NM_RF.W):
 				Dl = min(7*pos+7*fw_size, D)
-					
+			timesInfactibility = 0
+			rollbackMode = 0
+				
 			####### fix
 			#print(If,Il,Df,Dl)
 			#input("#")
