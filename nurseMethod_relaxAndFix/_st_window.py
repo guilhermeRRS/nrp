@@ -237,13 +237,13 @@ def _st_window_run(self, variables, sets, parameters, fixApproach, partition, iw
 			
 			####### setting parameters: fix
 			if timesInfactibility > 0:
-				pos -= fw_size*(2*(timesInfactibility - 1) + 1) #we go back a step while pos keeps movingo forward, this is why we do it times two
+				pos -= fw_size*(2*(timesInfactibility - 1) + 2) #we go back a step while pos keeps movingo forward, this is why we do it times two
 			if partition == int(NM_RF.I):
 				If = min(pos, I)
 			elif partition == int(NM_RF.W):
 				Df = min(7*pos, D)
 			if timesInfactibility > 0:
-				pos += fw_size*(2*(timesInfactibility - 1) + 1)
+				pos += fw_size*(2*(timesInfactibility - 1) + 2)
 			if partition == int(NM_RF.I):
 				Il = min(pos+fw_size, I)
 			elif partition == int(NM_RF.W):
