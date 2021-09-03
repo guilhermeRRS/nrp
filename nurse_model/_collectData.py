@@ -1,5 +1,5 @@
 # coding=utf-8
-import io
+import io, sys, os
 
 def readFile(path):
 	sucess = 1
@@ -19,7 +19,10 @@ def readFile(path):
 				errors.append("Error: The file "+path+" is empty")				
 	except:
 		sucess = 0
-		error.append("Error: Not able to open file ["+path+"]")		
+		errors.append("Error: Not able to open file ["+path+"]")
+		exc_type, exc_obj, exc_tb = sys.exc_info()
+		fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+		errors.append(["An exception happened while running the construct method", exc_type, fname, exc_tb.tb_lineno])
 	return sucess, errors, fileConteds
 	
 def splitFile(file):

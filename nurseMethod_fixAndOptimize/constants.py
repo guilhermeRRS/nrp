@@ -1,3 +1,4 @@
+# coding=utf-8
 ST = "1"	#STANDART WINDOW -> first digit
 I = "1"		#(ST) PARTITION IS NURSES -> second digit
 W = "2"		#(ST) PARTITION IS WEEKS -> second digit

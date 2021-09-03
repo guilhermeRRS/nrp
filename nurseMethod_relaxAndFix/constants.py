@@ -1,3 +1,4 @@
+# coding=utf-8
 ST = "1"	#STANDART WINDOW -> first digit
 BOTH = "1"	#FIX ZEROS AND ONES -> second digit
 ONE = "2"		#FIX ONLY ONES -> second digit

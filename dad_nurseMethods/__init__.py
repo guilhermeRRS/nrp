@@ -41,7 +41,7 @@ class Dad_NurseMethods:
 				for d in range(D):
 					shift = ""
 					for t in range(T):
-						if solution[i][d][t] == 1:
+						if solution[i][d][t] >= 0.5:
 							shift = T_set[t]
 					readable[-1].append(shift)
 						

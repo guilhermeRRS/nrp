@@ -92,7 +92,7 @@ def _st_window_run(self, variables, sets, parameters, initialSolution, partition
 			
 	if currentBestObjective == -1:
 		running = False
-		actionsTaken.append([2, False, ["INITIAL_SOLUTION_OBJECTIVE_NOT_FOUND"]])
+		actionsTaken.append([2, False, ["INITIAL_SOLUTION_OBJECTIVE_NOT_FOUND", m.Status, m.SolCount]])
 			
 	if running:
 			
